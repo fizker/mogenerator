@@ -55,13 +55,8 @@ class _<$managedObjectClassName$>: <$customSuperentity$> {
 <$foreach Attribute noninheritedAttributes do$>
 <$if Attribute.hasDefinedAttributeType$>
 <$if Attribute.hasScalarAttributeType$>
-<$if Attribute.isReadonly$>
     @NSManaged
-    let <$Attribute.name$>: NSNumber?
-<$else$>
-    @NSManaged
-    var <$Attribute.name$>: NSNumber?
-<$endif$>
+    <$if Attribute.isReadonly$>let<$else$>var<$endif$> <$Attribute.name$>: <$if Attribute.isOptional$>NSNumber?<$else$><$Attribute.scalarAttributeType$><$endif$>
 <$else$>
 <$if Attribute.isReadonly$>
     @NSManaged
