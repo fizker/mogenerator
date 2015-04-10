@@ -158,27 +158,27 @@ class _<$managedObjectClassName$>: <$customSuperentity$> {
 extension _<$managedObjectClassName$> {
 
     func add<$Relationship.name.initialCapitalString$>(objects: <$Relationship.immutableCollectionClassName$>) {
-        let mutable = NSMutable<$if Relationship.jr_isOrdered$>Ordered<$endif$>Set(set: self.<$Relationship.name$>)
-        mutable.union<$if Relationship.jr_isOrdered$>Ordered<$endif$>Set(objects as Set<NSObject>)
-        self.<$Relationship.name$> = NS<$if Relationship.jr_isOrdered$>Ordered<$endif$>Set(set: mutable)
+        let mutable = objects.mutableCopy() as! NSMutable<$if Relationship.jr_isOrdered$>Ordered<$endif$>Set
+        mutable.union<$if Relationship.jr_isOrdered$>Ordered<$endif$>Set(objects<$if Relationship.jr_isOrdered$><$else$> as Set<NSObject><$endif$>)
+        self.<$Relationship.name$> = mutable
     }
 
     func remove<$Relationship.name.initialCapitalString$>(objects: <$Relationship.immutableCollectionClassName$>) {
-        let mutable = NSMutable<$if Relationship.jr_isOrdered$>Ordered<$endif$>Set(set: self.<$Relationship.name$>)
-        mutable.minus<$if Relationship.jr_isOrdered$>Ordered<$endif$>Set(objects as Set<NSObject>)
-        self.<$Relationship.name$> = NS<$if Relationship.jr_isOrdered$>Ordered<$endif$>Set(set: mutable)
+        let mutable = objects.mutableCopy() as! NSMutable<$if Relationship.jr_isOrdered$>Ordered<$endif$>Set
+        mutable.minus<$if Relationship.jr_isOrdered$>Ordered<$endif$>Set(objects<$if Relationship.jr_isOrdered$><$else$> as Set<NSObject><$endif$>)
+        self.<$Relationship.name$> = mutable
     }
 
     func add<$Relationship.name.initialCapitalString$>Object(value: <$Relationship.destinationEntity.managedObjectClassName$>!) {
-        let mutable = NSMutable<$if Relationship.jr_isOrdered$>Ordered<$endif$>Set(set: self.<$Relationship.name$>)
+        let mutable = self.<$Relationship.name$>.mutableCopy() as! NSMutable<$if Relationship.jr_isOrdered$>Ordered<$endif$>Set
         mutable.addObject(value)
-        self.<$Relationship.name$> = NS<$if Relationship.jr_isOrdered$>Ordered<$endif$>Set(set: mutable)
+        self.<$Relationship.name$> = mutable
     }
 
     func remove<$Relationship.name.initialCapitalString$>Object(value: <$Relationship.destinationEntity.managedObjectClassName$>!) {
-        let mutable = NSMutable<$if Relationship.jr_isOrdered$>Ordered<$endif$>Set(set: self.<$Relationship.name$>)
+        let mutable = self.<$Relationship.name$>.mutableCopy() as! NSMutable<$if Relationship.jr_isOrdered$>Ordered<$endif$>Set
         mutable.removeObject(value)
-        self.<$Relationship.name$> = NS<$if Relationship.jr_isOrdered$>Ordered<$endif$>Set(set: mutable)
+        self.<$Relationship.name$> = mutable
     }
 
 }
